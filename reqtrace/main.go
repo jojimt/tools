@@ -19,6 +19,7 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		fwd := r.Header.Get("X-Forwarded-For")
 		fmt.Fprintf(w, "%s[ff: %s] --> %s[node: %s]\n", r.RemoteAddr, fwd, hostname, nodeName)
+		log.Printf("%s[ff: %s] --> %s[node: %s]\n", r.RemoteAddr, fwd, hostname, nodeName)
 
 	}
 	http.HandleFunc("/", tw)
